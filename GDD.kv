@@ -1,0 +1,313 @@
+WindowManager:
+    HomeWindow:
+    SearchWindow:
+    availabilityWindow:
+    galleryWindow:
+    contactWindow:
+    aboutWindow:
+
+<HomeWindow>:
+    name: "home"
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width,root.height
+    Image:
+        source: "appartment.png"
+        allow_stretch: True
+        keep_ratio: False
+        size_hint: 1,1
+    Spinner:
+        id:dropdown
+        text:""
+        values:["searchHouse","gallery","contact"]
+        on_text:app.root.current = dropdown.text
+        pos: (2,500)
+        size_hint:0.12,0.1
+        background_normal:'menu.webp'
+    Image:
+        source: "White_full.png"
+        allow_stretch: True
+        keep_ratio: False
+        size_hint: 1,0.13
+    Label:
+        text: "Welcome to Ebullience appartments "
+        font_size: 30
+        pos:(75,250)
+        bold: True
+        color:70,90,50
+        font_family:'Fantasy'
+    Label:
+        text: "Address: "
+        font_size: 16
+        pos:(25,10)
+        color: 1,1,1
+        bold: True
+        font_family:'Arial'
+
+    Button:
+        size_hint: (0.1,0.1)
+        font_size: 30
+        on_release: app.root.current="availability"
+        pos:(370,15)
+        background_normal:'search.jpg'
+        background_down:'search.jpg'
+    Button:
+        size_hint: (0.1,0.1)
+        font_size: 30
+        on_release: app.root.current="home"
+        pos:(50,15)
+        background_normal:'home.png'
+        background_down:'home.png'
+    Button:
+        size_hint: (0.1,0.1)
+        font_size: 30
+        on_release: app.root.current="about"
+        pos:(700,15)
+        background_normal:'about.png'
+        background_down:'about.png'
+<SearchWindow>:
+    name: "searchHouse"
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width,root.height
+    Image:
+        source: "appartment.png"
+        allow_stretch: True
+        keep_ratio: False
+        size_hint: 1,1
+    Image:
+        source: "White_full.png"
+        allow_stretch: True
+        keep_ratio: False
+        size_hint: 1,0.13
+    Label:
+        text: "Enter Flat Number : "
+        font_size: 20
+        pos:(3,8)
+        color: 100,44,0
+    Button:
+        size_hint: (0.1,0.1)
+        font_size: 30
+        on_release: app.root.current="availability"
+        pos:(370,15)
+        background_normal:'search.jpg'
+        background_down:'search.jpg'
+    Button:
+        size_hint: (0.1,0.1)
+        font_size: 30
+        on_release: app.root.current="home"
+        pos:(50,15)
+        background_normal:'home.png'
+        background_down:'home.png'
+    Button:
+        size_hint: (0.1,0.1)
+        font_size: 30
+        on_release: app.root.current="about"
+        pos:(700,15)
+        background_normal:'about.png'
+        background_down:'about.png'
+    TextInput:
+        id: FlatNo
+        pos:(300,400)
+        size_hint: 0.5,0.1
+        width:"100dp"
+        multiline: False
+        on_text_validate: root.FlatDetails(self)
+    Label:
+        id:op
+        text:""
+        pos:(85,150)
+        color:0,0,0
+
+
+<availabilityWindow>:
+    name: "availability"
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width,root.height
+    Image:
+        source: "White_full.png"
+        allow_stretch: True
+        keep_ratio: False
+        size_hint: 1,0.13
+    ToggleButton:
+        size_hint: (0.1,0.1)
+        pos:(70,70)
+        text:"Rent"
+        group:'flat'
+        on_state:root.rent(self)
+    ToggleButton:
+        size_hint: (0.1,0.1)
+        pos:(20,70)
+        text:"buy"
+        group:'flat'
+        on_state:root.buy(self)
+
+    Button:
+        size_hint: (0.1,0.1)
+        font_size: 30
+        on_release: app.root.current="availability"
+        pos:(370,15)
+        background_normal:'search.jpg'
+        background_down:'search.jpg'
+    Button:
+        size_hint: (0.1,0.1)
+        font_size: 30
+        on_release: app.root.current="home"
+        pos:(50,15)
+        background_normal:'home.png'
+        background_down:'home.png'
+    Button:
+        size_hint: (0.1,0.1)
+        font_size: 30
+        on_release: app.root.current="about"
+        pos:(700,15)
+        background_normal:'about.png'
+        background_down:'about.png'
+    Label:
+        id:table
+        pos:(50,50)
+        size_hint: (0.5,1.0)
+        font_size: 30
+<galleryWindow>:
+    name: "gallery"
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width,root.height
+    Image:
+        source: "backgroundimg.png"
+        allow_stretch: True
+        keep_ratio: False
+        size_hint: 1,1
+    Image:
+        source: "White_full.png"
+        allow_stretch: True
+        keep_ratio: False
+        size_hint: 1,0.13
+    Button:
+        size_hint: (0.15,0.15)
+        font_size: 30
+        on_release: root.front(self)
+        pos:(10,300)
+        background_normal:'left.jpeg'
+        background_down:'left.jpeg'
+    Button:
+        size_hint: (0.15,0.15)
+        font_size: 30
+        on_release: root.back(self)
+        pos:(700,300)
+        background_normal:'front1.jpeg'
+        background_down:'front1.jpeg'
+    Image:
+        id:img
+        source:root.temp[0]
+        allow_stretch: True
+        keep_ratio: False
+        size_hint: 0.65,0.65
+        pos:(125,125)
+    Button:
+        size_hint: (0.1,0.1)
+        font_size: 30
+        on_release: app.root.current="availability"
+        pos:(370,15)
+        background_normal:'search.jpg'
+        background_down:'search.jpg'
+    Button:
+        size_hint: (0.1,0.1)
+        font_size: 30
+        on_release: app.root.current="home"
+        pos:(50,15)
+        background_normal:'home.png'
+        background_down:'home.png'
+    Button:
+        size_hint: (0.1,0.1)
+        font_size: 30
+        on_release: app.root.current="about"
+        pos:(700,15)
+        background_normal:'about.png'
+        background_down:'about.png'
+<contactWindow>:
+    name: "contact"
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width,root.height
+    Image:
+        source: "appartment.png"
+        allow_stretch: True
+        keep_ratio: False
+        size_hint: 1,1
+
+    Image:
+        source: "White_full.png"
+        allow_stretch: True
+        keep_ratio: False
+        size_hint: 1,0.13
+    Label:
+        id:con
+        text:root.info(self)
+        pos:(25,50)
+        size_hint: (1.0,0.5)
+        font_size: 20
+    Button:
+        size_hint: (0.1,0.1)
+        font_size: 30
+        on_release: app.root.current="availability"
+        pos:(370,15)
+        background_normal:'search.jpg'
+        background_down:'search.jpg'
+    Button:
+        size_hint: (0.1,0.1)
+        font_size: 30
+        on_release: app.root.current="home"
+        pos:(50,15)
+        background_normal:'home.png'
+        background_down:'home.png'
+    Button:
+        size_hint: (0.1,0.1)
+        font_size: 30
+        on_release: app.root.current="about"
+        pos:(700,15)
+        background_normal:'about.png'
+        background_down:'about.png'
+<aboutWindow>:
+    name: "about"
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width,root.height
+    Image:
+        source: "appartment.png"
+        allow_stretch: True
+        keep_ratio: False
+        size_hint: 1,1
+    Label:
+        text:"Ebulliene Group of Companies is a house of \nEngineering & Construction excellence \nwith a group business income of over INR 565 Crores\n. Ebullience quality of service has helped to set the \nbar in the standards for the Civil, Mechanical, Hospitality \nand Real Estate Industries. Its commitment to time \nhas made projects resource effective.\n Ebullience endeavours to continue its pursuit \nof excellence and raise the benchmark of Quality, Safety \nand Delivery."
+        pos:(90,240)
+        size_hint: 0.65,0.65
+        font_size:23
+        color: 100,100,0
+    Image:
+        source: "White_full.png"
+        allow_stretch: True
+        keep_ratio: False
+        size_hint: 1,0.13
+    Button:
+        size_hint: (0.1,0.1)
+        font_size: 30
+        on_release: app.root.current="availability"
+        pos:(370,15)
+        background_normal:'search.jpg'
+        background_down:'search.jpg'
+    Button:
+        size_hint: (0.1,0.1)
+        font_size: 30
+        on_release: app.root.current="home"
+        pos:(50,15)
+        background_normal:'home.png'
+        background_down:'home.png'
+    Button:
+        size_hint: (0.1,0.1)
+        font_size: 30
+        on_release: app.root.current="about"
+        pos:(700,15)
+        background_normal:'about.png'
+        background_down:'about.png'
